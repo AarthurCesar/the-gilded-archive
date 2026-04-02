@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  /* === Surface Hierarchy (Dark Walnut & Leather) === */
+  --color-surface: #1A120B;
+  --color-surface-dim: #1A120B;
+  --color-surface-bright: #42372F;
+  --color-surface-container-lowest: #140D06;
+  --color-surface-container-low: #221A13;
+  --color-surface-container: #271E16;
+  --color-surface-container-high: #322820;
+  --color-surface-container-highest: #3D332B;
+
+  /* === Primary (Burnished Gold) === */
+  --color-primary: #E6C364;
+  --color-primary-container: #C9A84C;
+  --color-primary-fixed: #FFE08F;
+  --color-primary-fixed-dim: #E6C364;
+  --color-on-primary: #3D2E00;
+  --color-on-primary-container: #503D00;
+  --color-on-primary-fixed: #241A00;
+  --color-on-primary-fixed-variant: #584400;
+  --color-inverse-primary: #755B00;
+
+  /* === Secondary (Warm Leather) === */
+  --color-secondary: #DAC2B0;
+  --color-secondary-container: #564638;
+  --color-secondary-fixed: #F7DECB;
+  --color-secondary-fixed-dim: #DAC2B0;
+  --color-on-secondary: #3C2E21;
+  --color-on-secondary-container: #CBB4A2;
+  --color-on-secondary-fixed: #25190D;
+  --color-on-secondary-fixed-variant: #544436;
+
+  /* === Tertiary (Warm Sunset) === */
+  --color-tertiary: #FFB68C;
+  --color-tertiary-container: #F0955D;
+  --color-on-tertiary: #532200;
+  --color-on-tertiary-container: #6A2E00;
+  --color-on-tertiary-fixed: #321200;
+  --color-on-tertiary-fixed-variant: #753401;
+
+  /* === Text / On-Surface === */
+  --color-on-surface: #F1DFD3;
+  --color-on-surface-variant: #D0C5B2;
+  --color-on-background: #F1DFD3;
+  --color-inverse-surface: #F1DFD3;
+  --color-inverse-on-surface: #382F26;
+
+  /* === Outline === */
+  --color-outline: #99907E;
+  --color-outline-variant: #4D4637;
+
+  /* === Error === */
+  --color-error: #FFB4AB;
+  --color-error-container: #93000A;
+  --color-on-error: #690005;
+  --color-on-error-container: #FFDAD6;
+
+  /* === Kitchen Status Colors === */
+  --color-amber-status: #E8912D;
+  --color-blue-status: #4A90D9;
+  --color-green-status: #4CAF50;
+
+  /* === Extra tokens === */
+  --color-champagne: #A89B8C;
+  --color-ivory: #F5EDE0;
+
+  /* === Fonts === */
+  --font-serif: "Noto Serif", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* === Shadows === */
+  --shadow-ambient: 0 4px 40px rgba(20, 13, 6, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+    min-height: 100dvh;
+    margin: 0;
+  }
+  #root {
+    min-height: 100dvh;
+  }
+}
+
+/* === Utility Classes === */
+.gold-gradient {
+  background: linear-gradient(135deg, #E6C364 0%, #C9A84C 100%);
+}
+
+.wood-texture {
+  position: relative;
+}
+.wood-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop");
+  background-repeat: repeat;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.header-glass {
+  background: rgba(43, 30, 18, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes pulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(232, 145, 45, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(232, 145, 45, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 145, 45, 0); }
+}
+.order-pulse { animation: pulse-amber 2s infinite; }
