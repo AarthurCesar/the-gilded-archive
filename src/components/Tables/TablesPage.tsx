@@ -33,7 +33,6 @@ export default function TablesPage() {
           });
         });
 
-        const allReady = tableOrders.every((o) => o.status === 'pronto');
         const hasPending = tableOrders.some((o) => o.status !== 'pronto');
 
         return {
@@ -41,7 +40,6 @@ export default function TablesPage() {
           orders: tableOrders,
           items: Array.from(itemMap.values()),
           total: tableOrders.reduce((sum, o) => sum + o.total, 0),
-          allReady,
           hasPending,
         };
       });
@@ -85,7 +83,7 @@ export default function TablesPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {tables.map(({ table, items, total, allReady, hasPending, orders: tableOrders }) => (
+            {tables.map(({ table, items, total, hasPending, orders: tableOrders }) => (
               <div
                 key={table}
                 className="bg-[#1E1610] rounded-2xl border border-primary/10 overflow-hidden flex flex-col"
